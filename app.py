@@ -6,6 +6,7 @@ from sklearn.metrics.pairwise import cosine_similarity
 import numpy as np
 
 app = Flask(__name__)
+model = SentenceTransformer("all-MiniLM-L6-v2")
 
 # Load documents and embed them once
 documents = [
