@@ -1,23 +1,24 @@
-from flask import Flask, render_template, request
-from sentence_transformers import SentenceTransformer
-from flask import Flask, request, jsonify
-import os
+import streamlit as st
 
+st.set_page_config(page_title="AI Q&A Chatbot", layout="centered")
+
+st.title("🤖 AI Q&A Chatbot")
+st.write("Ask me anything about Artificial Intelligence (A-Z)!")
+
+# Input box
+query = st.text_input("🔍 Your Question")
+
+# Dummy answer logic (replace with your embedding-based answer logic)
+if query:
+    # You can replace this with document similarity logic
+    st.success(f"📘 Answer: I’ll soon answer your question: **{query}**")
+
+from flask import Flask, render_template, request
+from langchain_huggingface import HuggingFaceEmbeddings
 from sklearn.metrics.pairwise import cosine_similarity
 import numpy as np
+
 app = Flask(__name__)
-
-@app.route("/")
-def home():
-    return "AI Knowledge App is Running ✅"
-
-# 🟢 Your existing endpoints here...
-
-if __name__ == "__main__":
-    port = int(os.environ.get("PORT", 5000))  # 🟢 Read port from environment
-    app.run(host="0.0.0.0", port=port)        # 🟢 Bind to 0.0.0.0
-
-model = SentenceTransformer("all-MiniLM-L6-v2")
 
 # Load documents and embed them once
 documents = [
