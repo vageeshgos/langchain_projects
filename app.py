@@ -1,11 +1,22 @@
 from flask import Flask, render_template, request
 from sentence_transformers import SentenceTransformer
-
+from flask import Flask, request, jsonify
+import os
 
 from sklearn.metrics.pairwise import cosine_similarity
 import numpy as np
-
 app = Flask(__name__)
+
+@app.route("/")
+def home():
+    return "AI Knowledge App is Running ✅"
+
+# 🟢 Your existing endpoints here...
+
+if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 5000))  # 🟢 Read port from environment
+    app.run(host="0.0.0.0", port=port)        # 🟢 Bind to 0.0.0.0
+
 model = SentenceTransformer("all-MiniLM-L6-v2")
 
 # Load documents and embed them once
