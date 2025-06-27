@@ -1,5 +1,7 @@
 from flask import Flask, render_template, request
-from langchain_huggingface import HuggingFaceEmbeddings
+from sentence_transformers import SentenceTransformer
+
+
 from sklearn.metrics.pairwise import cosine_similarity
 import numpy as np
 
