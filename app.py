@@ -4,8 +4,7 @@ st.set_page_config(page_title="AI Q&A Chatbot", layout="centered")
 
 st.title("🤖 AI Q&A Chatbot")
 st.write("Ask me anything about Artificial Intelligence (A-Z)!")
-
-# Input box
+
 query = st.text_input("🔍 Your Question")
 
 # Dummy answer logic (replace with your embedding-based answer logic)
